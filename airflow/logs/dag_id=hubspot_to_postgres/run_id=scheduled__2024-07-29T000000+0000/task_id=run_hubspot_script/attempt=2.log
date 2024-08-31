@@ -1,0 +1,175 @@
+[2024-08-28T14:41:49.775+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-08-28T14:41:49.822+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: hubspot_to_postgres.run_hubspot_script scheduled__2024-07-29T00:00:00+00:00 [queued]>
+[2024-08-28T14:41:49.866+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: hubspot_to_postgres.run_hubspot_script scheduled__2024-07-29T00:00:00+00:00 [queued]>
+[2024-08-28T14:41:49.867+0000] {taskinstance.py:2856} INFO - Starting attempt 2 of 2
+[2024-08-28T14:41:49.934+0000] {taskinstance.py:2879} INFO - Executing <Task(PythonOperator): run_hubspot_script> on 2024-07-29 00:00:00+00:00
+[2024-08-28T14:41:49.946+0000] {standard_task_runner.py:72} INFO - Started process 6965 to run task
+[2024-08-28T14:41:49.950+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'hubspot_to_postgres', 'run_hubspot_script', 'scheduled__2024-07-29T00:00:00+00:00', '--job-id', '730', '--raw', '--subdir', 'DAGS_FOLDER/hubspot_to_postgres_dag.py', '--cfg-path', '/tmp/tmpt4mog2dk']
+[2024-08-28T14:41:49.953+0000] {standard_task_runner.py:105} INFO - Job 730: Subtask run_hubspot_script
+[2024-08-28T14:41:50.166+0000] {task_command.py:467} INFO - Running <TaskInstance: hubspot_to_postgres.run_hubspot_script scheduled__2024-07-29T00:00:00+00:00 [running]> on host 9e43cf90fc4e
+[2024-08-28T14:41:50.443+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='hubspot_to_postgres' AIRFLOW_CTX_TASK_ID='run_hubspot_script' AIRFLOW_CTX_EXECUTION_DATE='2024-07-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-29T00:00:00+00:00'
+[2024-08-28T14:41:50.444+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-08-28T14:41:52.483+0000] {logging_mixin.py:190} INFO - Extracting data from /crm/v3/objects/contacts?properties=additional_notes,additional_visits,address,after_market_parts_,ai_setter_id,annualrevenue,any_accidents_,any_communication_with_manufacturer_,are_you_in_the_military_,associatedcompanyid,associatedcompanylastupdated,attachment_mapping,buy,calendly_answer_1,calendly_answer_10,calendly_answer_2,calendly_answer_3,calendly_answer_4,calendly_answer_5,calendly_answer_6,calendly_answer_7,calendly_answer_8,calendly_answer_9,calendly_question_1,calendly_question_10,calendly_question_2,calendly_question_3,calendly_question_4,calendly_question_5,calendly_question_6,calendly_question_7,calendly_question_8,calendly_question_9,call_average__speed_lead_,call_destination_number,call_id,call_rail__,call_recording_link,caller_id,campaign_tag,car,car_make_1,car_make_others,car_manufacturer,car_manufacturer__new_,car_model,car_model_1,car_model_others,car_spanish,car_type,car_year,charlie_enabled,city,closedate,company,company_size,contact_moved,contact_owner_email,contact_s_days_old,contact_schedule_link,count_of_qualified,country,cpo,createdate,cual_es_la_marca_y_modelo_de_tu_carro___por_ejemplo__chevy_silverado_,cuantas_veces_has_llevado_tu_carro_a_la_agencia_para_reparacion_,cul_es_la_marca_y_modelo_de_su_automvil,cul_es_la_marca_y_modelo_de_su_vehculo,cuntas_veces_ha_llevado_a_su_vehculo_a_la_concesionaria_para_reparaciones,cuntas_veces_ha_llevado_su_auto_al_concesionario_para_que_lo_reparen,current_issues_today,current_mileage,currentlyinworkflow,custom_lead_status__alexia_,custom_updated_time,dashboard,date_of_birth,days,days_out_of_service,days_to_close,de_qu_ao_o_versin_es_su_vehculo,de_qu_ao_o_versin_es_su_vehculo_solo_califican_2019_o_ms_nuevos,de_que_ano_es_tu_carro_,dealership,dealership_spanish,degree,did_you_buy_lease_your_vehicle_new__used__cpo_,did_you_buy_your_vehicle_in_ca_,diesel,drip_campaign_001_lead,driver,duration,editable_purchased_leased_in_which_city_,email,email_lla,en_cul_estado_de_usa_compr_su_auto,engagements_last_meeting_booked,engagements_last_meeting_booked_campaign,engagements_last_meeting_booked_medium,engagements_last_meeting_booked_source,facebook_ad,facebook_ad_group,facebook_ad_name,facebook_ad_spanish,facebook_campaign_name,fax,fda_lead_status_tagging,field_of_study,first_campaign_contacted,first_conversion_date,first_conversion_event_name,first_deal_created_date,first_medium_contacted,first_outbound_sms_date,first_presentation_details,first_source_contacted,first_tracking_number_contacted,firstname,form_capture_data,formatted_duration,full_name,future_case_date,gclid,gender,graduation_date,how_many_times_have_you_taken_your_car_to_the_dealership_for_repairs,how_many_times_taken_,hs_additional_emails,hs_all_accessible_team_ids,hs_all_contact_vids,hs_all_owner_ids,hs_all_team_ids,hs_analytics_average_page_views,hs_analytics_first_referrer,hs_analytics_first_timestamp,hs_analytics_first_touch_converting_campaign,hs_analytics_first_url,hs_analytics_first_visit_timestamp,hs_analytics_last_referrer,hs_analytics_last_timestamp,hs_analytics_last_touch_converting_campaign,hs_analytics_last_url,hs_analytics_last_visit_timestamp,hs_analytics_num_event_completions,hs_analytics_num_page_views,hs_analytics_num_visits,hs_analytics_revenue,hs_analytics_source,hs_analytics_source_data_1,hs_analytics_source_data_2,hs_associated_target_accounts,hs_avatar_filemanager_key,hs_buying_role,hs_calculated_form_submissions,hs_calculated_merged_vids,hs_calculated_mobile_number,hs_calculated_phone_number,hs_calculated_phone_number_area_code,hs_calculated_phone_number_country_code,hs_calculated_phone_number_region_code,hs_clicked_linkedin_ad,hs_content_membership_email,hs_content_membership_email_confirmed,hs_content_membership_follow_up_enqueued_at,hs_content_membership_notes,hs_content_membership_registered_at,hs_content_membership_registration_domain_sent_to,hs_content_membership_registration_email_sent_at,hs_content_membership_status,hs_conversations_visitor_email,hs_count_is_unworked,hs_count_is_worked,hs_created_by_conversations,hs_created_by_user_id,hs_createdate,hs_date_entered_158828060,hs_date_entered_93507194,hs_date_entered_93529658,hs_date_entered_93563056,hs_date_entered_customer,hs_date_entered_evangelist,hs_date_entered_lead,hs_date_entered_marketingqualifiedlead,hs_date_entered_opportunity,hs_date_entered_other,hs_date_entered_salesqualifiedlead,hs_date_entered_subscriber,hs_date_exited_158828060,hs_date_exited_93507194,hs_date_exited_93529658,hs_date_exited_93563056,hs_date_exited_customer,hs_date_exited_evangelist,hs_date_exited_lead,hs_date_exited_marketingqualifiedlead,hs_date_exited_opportunity,hs_date_exited_other,hs_date_exited_salesqualifiedlead,hs_date_exited_subscriber,hs_document_last_revisited,hs_email_bad_address,hs_email_bounce,hs_email_click,hs_email_customer_quarantined_reason,hs_email_delivered,hs_email_domain,hs_email_first_click_date,hs_email_first_open_date,hs_email_first_reply_date,hs_email_first_send_date,hs_email_hard_bounce_reason,hs_email_hard_bounce_reason_enum,hs_email_is_ineligible,hs_email_last_click_date,hs_email_last_email_name,hs_email_last_open_date,hs_email_last_reply_date,hs_email_last_send_date,hs_email_open,hs_email_optout,hs_email_optout_256472811,hs_email_optout_89661553,hs_email_optout_96682145,hs_email_quarantined,hs_email_quarantined_reason,hs_email_replied,hs_email_sends_since_last_engagement,hs_emailconfirmationstatus,hs_facebook_ad_clicked,hs_facebook_click_id,hs_first_engagement_object_id,hs_first_outreach_date,hs_first_subscription_create_date,hs_google_click_id,hs_has_active_subscription,hs_ip_timezone,hs_is_contact,hs_is_unworked,hs_language,hs_last_sales_activity_date,hs_last_sales_activity_timestamp,hs_last_sales_activity_type,hs_lastmodifieddate,hs_latest_disqualified_lead_date,hs_latest_meeting_activity,hs_latest_open_lead_date,hs_latest_qualified_lead_date,hs_latest_sequence_ended_date,hs_latest_sequence_enrolled,hs_latest_sequence_enrolled_date,hs_latest_sequence_finished_date,hs_latest_sequence_unenrolled_date,hs_latest_source,hs_latest_source_data_1,hs_latest_source_data_2,hs_latest_source_timestamp,hs_latest_subscription_create_date,hs_lead_status,hs_legal_basis,hs_lifecyclestage_customer_date,hs_lifecyclestage_evangelist_date,hs_lifecyclestage_lead_date,hs_lifecyclestage_marketingqualifiedlead_date,hs_lifecyclestage_opportunity_date,hs_lifecyclestage_other_date,hs_lifecyclestage_salesqualifiedlead_date,hs_lifecyclestage_subscriber_date,hs_linkedin_ad_clicked,hs_marketable_reason_id,hs_marketable_reason_type,hs_marketable_status,hs_marketable_until_renewal,hs_membership_has_accessed_private_content,hs_membership_last_private_content_access_date,hs_merged_object_ids,hs_mobile_sdk_push_tokens,hs_notes_next_activity_type,hs_object_id,hs_object_source,hs_object_source_detail_1,hs_object_source_detail_2,hs_object_source_detail_3,hs_object_source_id,hs_object_source_label,hs_object_source_user_id,hs_persona,hs_pinned_engagement_id,hs_pipeline,hs_predictivecontactscore_v2,hs_predictivescoringtier,hs_prospecting_agent_actively_enrolled_count,hs_quarantined_emails,hs_read_only,hs_registered_member,hs_registration_method,hs_sa_first_engagement_date,hs_sa_first_engagement_descr,hs_sa_first_engagement_object_type,hs_sales_email_last_clicked,hs_sales_email_last_opened,hs_sales_email_last_replied,hs_searchable_calculated_international_mobile_number,hs_searchable_calculated_international_phone_number,hs_searchable_calculated_mobile_number,hs_searchable_calculated_phone_number,hs_sequences_actively_enrolled_count,hs_sequences_enrolled_count,hs_sequences_is_enrolled,hs_testpurge,hs_testrollback,hs_time_between_contact_creation_and_deal_close,hs_time_between_contact_creation_and_deal_creation,hs_time_in_158828060,hs_time_in_93507194,hs_time_in_93529658,hs_time_in_93563056,hs_time_in_customer,hs_time_in_evangelist,hs_time_in_lead,hs_time_in_marketingqualifiedlead,hs_time_in_opportunity,hs_time_in_other,hs_time_in_salesqualifiedlead,hs_time_in_subscriber,hs_time_to_first_engagement,hs_time_to_move_from_lead_to_customer,hs_time_to_move_from_marketingqualifiedlead_to_customer,hs_time_to_move_from_opportunity_to_customer,hs_time_to_move_from_salesqualifiedlead_to_customer,hs_time_to_move_from_subscriber_to_customer,hs_timezone,hs_unique_creation_key,hs_updated_by_user_id,hs_user_ids_of_all_notification_followers,hs_user_ids_of_all_notification_unfollowers,hs_user_ids_of_all_owners,hs_v2_cumulative_time_in_158828060,hs_v2_cumulative_time_in_93507194,hs_v2_cumulative_time_in_93529658,hs_v2_cumulative_time_in_93563056,hs_v2_cumulative_time_in_customer,hs_v2_cumulative_time_in_evangelist,hs_v2_cumulative_time_in_lead,hs_v2_cumulative_time_in_opportunity,hs_v2_cumulative_time_in_other,hs_v2_cumulative_time_in_salesqualifiedlead,hs_v2_cumulative_time_in_subscriber,hs_v2_date_entered_158828060,hs_v2_date_entered_93507194,hs_v2_date_entered_93529658,hs_v2_date_entered_93563056,hs_v2_date_entered_customer,hs_v2_date_entered_evangelist,hs_v2_date_entered_lead,hs_v2_date_entered_opportunity,hs_v2_date_entered_other,hs_v2_date_entered_salesqualifiedlead,hs_v2_date_entered_subscriber,hs_v2_date_exited_158828060,hs_v2_date_exited_93507194,hs_v2_date_exited_93529658,hs_v2_date_exited_93563056,hs_v2_date_exited_customer,hs_v2_date_exited_evangelist,hs_v2_date_exited_lead,hs_v2_date_exited_opportunity,hs_v2_date_exited_other,hs_v2_date_exited_salesqualifiedlead,hs_v2_date_exited_subscriber,hs_v2_latest_time_in_158828060,hs_v2_latest_time_in_93507194,hs_v2_latest_time_in_93529658,hs_v2_latest_time_in_93563056,hs_v2_latest_time_in_customer,hs_v2_latest_time_in_evangelist,hs_v2_latest_time_in_lead,hs_v2_latest_time_in_opportunity,hs_v2_latest_time_in_other,hs_v2_latest_time_in_salesqualifiedlead,hs_v2_latest_time_in_subscriber,hs_was_imported,hs_whatsapp_phone_number,hubspot_owner_assigneddate,hubspot_owner_id,hubspot_team_id,hubspotscore,if_you_answer_the_previous_question_yes__from_what_manufacturer_dealership__do_you_remember_the_nam,in_what_state_did_you_get_your_car_from,industry,initial_zoom_webinar_attendance_average_duration,initial_zoom_webinar_attendance_count,initial_zoom_webinar_registration_count,intake_agent,intaker,involved_in_accident,ip_city,ip_country,ip_country_code,ip_latlon,ip_state,ip_state_code,ip_zipcode,is_the_intake_complete_,issue,issue_problem_spanish,issues,job_function,jobtitle,jot_form_date,kill_switched,last_campaign_contacted,last_inbound_text,last_keywords,last_landing_page,last_medium_contacted,last_ob_call_date,last_ob_call_made,last_outbound_text,last_source_contacted,last_tracking_number_contacted,lastmodifieddate,lastname,lead_ad_prop4_were_your_repairs_covered_under_warranty,lead_ad_prop4_which_state_did_you_purchase_your_car_in,lead_ad_prop5_did_you_get_your_car_new_or_used,lead_ad_prop5_en_qu_estado_compraste_tu_vehiculo,lead_ad_prop5_were_your_repair_orders_documented,lead_ad_prop5_which_state_did_you_purchase_your_car_in,lead_retention_period__test_,lead_source,lead_status___change_date,lifecyclestage,lla_contact_owner_name,make_and_model,manufacturer,marital_status,marketing_organic_lead_status,message,mileage,miles_now,miles_when_bought,military_status,mobilephone,monetary_value,most_recent_call_direction,most_recent_call_sentiment,most_recent_communication_direction,most_recent_inbound_sms_date,most_recent_outbound_sms_date,most_recent_sms_direction,n002_drip_campaign,n40_day_reply,new__lead_source,new__qualifies,new_lead_to_retained,new_or_used,new_or_used_new,nombre_completo,not_interested___reason,notes_last_contacted,notes_last_updated,notes_next_activity_date,num_associated_deals,num_contacted_notes,num_conversion_events,num_notes,num_unique_conversion_events,number_of_call_attempts,number_of_inbound_sms,number_of_inbound_sms_today,number_of_issues_website_form,number_of_outbound_sms,number_of_outbound_sms_today,number_of_times_in_shop__presentations_,numemployees,ob_calls_made,on_risc,organic_marketing__qualified__,other_us_state,outbound_last_call,own,owner_email,pdf_property_modified,phone,phone_number_2,pod_task_incomplete_date,point_of_contact,previous_lead_status,problem,purchased_or_leased_,qu_problemas_est_teniendo_con_su_vehculo,qualified_score,qualifies,qualifies__cloned_,quality,que_problema_tienes_con_tu_carro_,quill_contact_id,quill_last_sync,recent_conversion_date,recent_conversion_event_name,recent_deal_amount,recent_deal_close_date,registered_owner_2,registered_owner_s_,relationship_status,repair,repairs,resurrection_meeting_link,retained_average,retained_date,rr_dashboardlink_1,rr_emailshare_1,rr_facebookmessengershare_1,rr_facebookshare_1,rr_joineddate_1,rr_lastsharedate_1,rr_linkshare_1,rr_member_email,rr_member_externalid,rr_member_full_name,rr_member_phone,rr_member_referral_code,rr_memberid_1,rr_memberurl,rr_passwordset_1,rr_programjoined_1,rr_referral_source_note,rr_referralcode_1,rr_referralid,rr_referralurl,rr_smsshare_1,rr_source,rr_totalapprovedreferrals_1,rr_totalissuedrewardamount_1,rr_totalpendingreferrals_1,rr_totalpendingrewardamount_1,rr_totalqualifiedreferrals_1,rr_totalreferrals_1,rr_totalreferralviews_1,rr_totalrewards_1,rr_twittershare_1,rr_webshare_1,rr_whatsappshare_1,salutation,school,second_presentation_details,seniority,service_shop_days,sms_direction,sms_message,source,source_ad,source_adset,source_campaign,source_language,source_lead_form,source_organic,source_traffic,sprout_social,start_date,state,state__form_,state_serviced,surveymonkeyeventlastupdated,swipepages_page_name,swipepages_submitted_date,swipepages_variant_name,system_qualification,tag,tags,task,task_count__test_,task_priority_status,team,team_d_round_robin_meeting_link,test__name_,test_resurrect_meeting_link,third_presentation_details,times_in_shop,today_s_date,total_revenue,tracking_number_company_name,twitterhandle,uber_lyft,us_state,utm_campaign,utm_content,utm_medium,utm_source,utm_term,valid_title,vendor,waiting_on_docs_date,warranty,warranty_spanish,webinareventlastupdated,website,what_car_problem_are_you_having_,what_car_problem_do_you_have,what_is_the_status_of_your_car_problem_,what_model_is_your_car,what_s_the_make_and_model_of_your_car_,what_year_is_your_car,what_year_is_your_car_,what_year_is_your_car_only_2019_or_newer_qualify,whats_the_make_and_model_of_your_car,which_state_did_you_get_your_car_from,work_email,year,year_spanish,year_website_form,zip,zoom_webinar_attendance_average_duration,zoom_webinar_attendance_count,zoom_webinar_joinlink,zoom_webinar_registration_count
+[2024-08-28T14:41:56.158+0000] {taskinstance.py:3301} ERROR - Task failed with exception
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/opt/airflow/hubspot_extractor_postgreSQL.py", line 213, in process_endpoint
+    insert_data_into_postgresql(data, table_name)
+  File "/opt/airflow/hubspot_extractor_postgreSQL.py", line 108, in insert_data_into_postgresql
+    conn = psycopg2.connect(**POSTGRES_CONFIG)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/hubspot_extractor_postgreSQL.py", line 230, in extract_and_load_data
+    pool.map(process_endpoint, endpoints.items())
+  File "/usr/local/lib/python3.12/multiprocessing/pool.py", line 367, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/multiprocessing/pool.py", line 774, in get
+    raise self._value
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+[2024-08-28T14:41:56.201+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=hubspot_to_postgres, task_id=run_hubspot_script, run_id=scheduled__2024-07-29T00:00:00+00:00, execution_date=20240729T000000, start_date=20240828T144149, end_date=20240828T144156
+[2024-08-28T14:41:56.277+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-08-28T14:41:56.279+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 730 for task run_hubspot_script (connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+; 6965)
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/opt/airflow/hubspot_extractor_postgreSQL.py", line 213, in process_endpoint
+    insert_data_into_postgresql(data, table_name)
+  File "/opt/airflow/hubspot_extractor_postgreSQL.py", line 108, in insert_data_into_postgresql
+    conn = psycopg2.connect(**POSTGRES_CONFIG)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 2995, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3149, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3173, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/hubspot_extractor_postgreSQL.py", line 230, in extract_and_load_data
+    pool.map(process_endpoint, endpoints.items())
+  File "/usr/local/lib/python3.12/multiprocessing/pool.py", line 367, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/multiprocessing/pool.py", line 774, in get
+    raise self._value
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+[2024-08-28T14:41:56.301+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 1
+[2024-08-28T14:41:56.333+0000] {taskinstance.py:3891} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-08-28T14:41:56.336+0000] {local_task_job_runner.py:240} INFO - ::endgroup::
