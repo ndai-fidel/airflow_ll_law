@@ -117,8 +117,29 @@ def insert_data_into_postgresql(data, table_name):
             records_to_insert = []
             for record in batch:
                 properties = record['properties']
-                records_to_insert.append([properties.get(key) for key in columns.keys()])
-            extras.execute_batch(cursor, query, records_to_insert)
+                
+                # Ensure the 'id' field exists and is not None
+                if record.get('id') is None:
+                    print(f"Skipping record with no ID: {record}")
+                    continue  # Skip records with no ID
+                
+                record_values = [
+                    record.get('id'),  # Fetch ID from record
+                    record.get('createdAt'),
+                    record.get('updatedAt'),
+                ]
+
+                # Get the other properties
+                for key in columns.keys():
+                    if key in ['id', 'createdAt', 'updatedAt']:
+                        continue  # Skip these since they are already added
+                    record_values.append(properties.get(key))
+                
+                records_to_insert.append(record_values)
+            
+            # Insert only if records_to_insert is not empty
+            if records_to_insert:
+                extras.execute_batch(cursor, query, records_to_insert)
 
         conn.commit()
     cursor.close()
