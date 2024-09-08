@@ -57,22 +57,40 @@ def create_table_if_not_exists(cursor, table_name, columns):
     cursor.execute(query)
 
 def get_hubspot_data(endpoint, retries=3, backoff_factor=1.0, timeout=30):
-    """Fetch data from HubSpot's API."""
+    """Fetch data from HubSpot's API with pagination support."""
+    all_data = []
     url = f'https://api.hubapi.com{endpoint}'
     headers = {
         'Authorization': f'Bearer {HUBSPOT_ACCESS_TOKEN}',
         'Content-Type': 'application/json'
     }
-    for attempt in range(retries):
-        try:
-            response = requests.get(url, headers=headers, timeout=timeout)
-            response.raise_for_status()
-            return response.json()
-        except RequestException as e:
-            if attempt < retries - 1:
-                time.sleep(backoff_factor * (2 ** attempt))
-            else:
-                raise
+    has_more = True
+    after = None
+
+    while has_more:
+        paginated_url = url
+        if after:
+            paginated_url += f'&after={after}'
+        
+        for attempt in range(retries):
+            try:
+                response = requests.get(paginated_url, headers=headers, timeout=timeout)
+                response.raise_for_status()
+                result = response.json()
+                
+                # Collect the data from the current page
+                all_data.extend(result.get('results', []))
+
+                # Handle pagination, check if there is more data to fetch
+                after = result.get('paging', {}).get('next', {}).get('after')
+                has_more = after is not None  # Continue if there is a next page
+                break  # Break retry loop on success
+            except RequestException as e:
+                if attempt < retries - 1:
+                    time.sleep(backoff_factor * (2 ** attempt))  # Exponential backoff
+                else:
+                    raise
+    return all_data
 
 def insert_data_into_postgresql(data, table_name):
     """Insert data into PostgreSQL using PostgresHook."""
@@ -147,10 +165,10 @@ def insert_data_into_postgresql(data, table_name):
 
 def extract_and_load_data():
     """Extract data from HubSpot and load it into Postgres."""
-    endpoint = '/crm/v3/objects/contacts'
+    endpoint = '/crm/v3/objects/contacts?limit=100'  # Adding pagination limit
     data = get_hubspot_data(endpoint)
     if data:
-        insert_data_into_postgresql(data['results'], 'contacts')
+        insert_data_into_postgresql(data, 'contacts')
 
 # Define Airflow task
 extract_and_load_task = PythonOperator(
