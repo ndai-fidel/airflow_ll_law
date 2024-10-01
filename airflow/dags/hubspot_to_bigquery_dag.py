@@ -6,8 +6,6 @@ import requests
 from google.cloud import bigquery
 import logging
 import time
-import json
-from airflow.models import Variable
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -44,14 +42,13 @@ default_args = {
 dag = DAG(
     'hubspot_to_bigquery_dag',
     default_args=default_args,
-    description='Extract all HubSpot contact data incrementally and load into BigQuery',
+    description='Extract all HubSpot contact data and load into BigQuery',
     schedule_interval=timedelta(days=1),  # Runs daily
     catchup=False,
 )
 
 MAX_COLUMN_NAME_LENGTH = 300  # Adjusted to accommodate longer property names
 BATCH_SIZE = 100  # Batch size for inserting data into BigQuery
-STATE_VARIABLE_KEY = 'hubspot_last_updated_at'  # Airflow Variable key for state persistence
 
 # Helper function to truncate column names
 def truncate_column_name(column_name):
@@ -75,7 +72,7 @@ def get_contact_properties():
     return property_names
 
 # Fetch contacts from HubSpot in batches and load into BigQuery
-def fetch_and_load_hubspot_contacts(**context):
+def fetch_and_load_hubspot_contacts():
     client = bigquery.Client(project=BIGQUERY_PROJECT_ID)
     table_id = f"{BIGQUERY_PROJECT_ID}.{BIGQUERY_DATASET_ID}.{TABLE_NAME}"
 
@@ -117,47 +114,28 @@ def fetch_and_load_hubspot_contacts(**context):
         table = client.create_table(table)
         logger.info(f"Created table {table_id}.")
 
-    # Retrieve the last updatedAt timestamp from Airflow Variables
-    last_updated_at = Variable.get(STATE_VARIABLE_KEY, default_var=None)
-    if last_updated_at:
-        logger.info(f"Resuming from last_updated_at: {last_updated_at}")
-    else:
-        logger.info("No previous state found. Fetching all contacts.")
-
     # Prepare to fetch data
-    url = 'https://api.hubapi.com/crm/v3/objects/contacts/search'
+    url = 'https://api.hubapi.com/crm/v3/objects/contacts'
     headers = {
         'Authorization': f'Bearer {HUBSPOT_ACCESS_TOKEN}',
-        'Content-Type': 'application/json',
+    }
+
+    params = {
+        'limit': 100,  # Max per page
+        'properties': ','.join(properties),  # Include all properties
     }
 
     after = None
     total_records = 0
-    max_updated_at = last_updated_at  # Keep track of the max updatedAt timestamp
-    has_more = True
 
-    while has_more:
-        payload = {
-            "filterGroups": [],
-            "properties": properties,
-            "limit": 100,  # Max per page
-            "after": after,
-        }
-
-        # Add the updatedAt filter if last_updated_at is available
-        if last_updated_at:
-            payload["filterGroups"].append({
-                "filters": [
-                    {
-                        "propertyName": "updatedAt",
-                        "operator": "GT",
-                        "value": last_updated_at
-                    }
-                ]
-            })
+    while True:
+        if after:
+            params['after'] = after
+        else:
+            params.pop('after', None)
 
         try:
-            response = requests.post(url, headers=headers, json=payload, timeout=30)
+            response = requests.get(url, headers=headers, params=params, timeout=30)
         except Exception as e:
             logger.error(f"Error fetching data from HubSpot: {e}")
             break
@@ -181,9 +159,6 @@ def fetch_and_load_hubspot_contacts(**context):
                 'createdAt': contact.get('createdAt'),
                 'updatedAt': contact.get('updatedAt'),
             }
-            # Update max_updated_at
-            if not max_updated_at or contact['updatedAt'] > max_updated_at:
-                max_updated_at = contact['updatedAt']
             # Add properties
             for field in properties:
                 field_name = truncate_column_name(field)
@@ -206,19 +181,14 @@ def fetch_and_load_hubspot_contacts(**context):
         paging = data.get('paging', {})
         next_page = paging.get('next', {})
         after = next_page.get('after')
-        has_more = after is not None
+        if not after:
+            break
 
     logger.info(f"Total records inserted: {total_records}")
-
-    # Save the max_updated_at back to Airflow Variables for the next run
-    if max_updated_at:
-        Variable.set(STATE_VARIABLE_KEY, max_updated_at)
-        logger.info(f"Updated {STATE_VARIABLE_KEY} to {max_updated_at}")
 
 # Define task for the DAG
 extract_and_load_task = PythonOperator(
     task_id='fetch_and_load_hubspot_contacts',
     python_callable=fetch_and_load_hubspot_contacts,
     dag=dag,
-    provide_context=True,
 )
